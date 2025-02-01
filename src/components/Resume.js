@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Terminal as TerminalIcon } from 'lucide-react';
+import Link from 'next/link';
 
 const Resume = () => {
     const [input, setInput] = useState('');
@@ -262,7 +263,15 @@ What I'm passionate about:
                             </div>
 
                             <div>
-                                <h3 className="text-xl font-bold mb-4 text-[#e6e6e6]">Latest Blog Posts</h3>
+                                <div className="flex justify-between items-center mb-4">
+                                    <h3 className="text-xl font-bold text-[#e6e6e6]">Latest Blog Posts</h3>
+                                    <Link
+                                        href="/blog"
+                                        className="text-sm text-[#98c379] hover:text-[#b5e890] transition-colors duration-200"
+                                    >
+                                        View All →
+                                    </Link>
+                                </div>
                                 <div className="space-y-4">
                                     {resumeData.blogs.map((blog, index) => (
                                         <div key={index} className="group">
