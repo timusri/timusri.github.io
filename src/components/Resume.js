@@ -10,92 +10,45 @@ const Resume = () => {
     const [currentDir, setCurrentDir] = useState('~');
     const [typing, setTyping] = useState('');
     const [showPrompt, setShowPrompt] = useState(false);
+    const [isTyping, setIsTyping] = useState(false);
     const inputRef = useRef(null);
     const terminalRef = useRef(null);
 
     const resumeData = {
         about: [
-            `I am a DevOps and Cloud Platform Engineer with + years of experience in building scalable cloud infrastructure.`,
-            `I specialize in AWS and GCP environments, with expertise in Kubernetes, infrastructure automation, and modern DevOps practices.`,
-            `Throughout my career, I've focused on optimizing cloud costs, implementing secure architectures, and building reliable deployment pipelines. `,
-            `I'm passionate about creating robust infrastructure solutions that help teams deliver better software faster.`
+            'Senior DevOps Engineer with extensive experience in cloud infrastructure and automation.',
+            'Passionate about building scalable systems and improving development workflows.',
+            'Experienced in implementing and maintaining CI/CD pipelines.'
         ],
         skills: [
-            `Languages: Python, Bash, Go`,
-            `Cloud Platforms: AWS, GCP`,
-            `Container Technologies: Kubernetes, Docker, GKE, EKS, FLY.IO`,
-            `Infrastructure Tools: Terraform, Ansible, Helm, Packer`,
-            `Monitoring: ELK stack, Prometheus, Grafana LGTM stack`,
-            `Databases: Redis, Kafka, MongoDB, BigQuery, DynamoDB, RDS, RedShift`
+            'AWS, GCP, Azure',
+            'Kubernetes, Docker',
+            'Terraform, Ansible',
+            'Jenkins, GitLab CI',
+            'Python, Bash, Go',
+            'Prometheus, Grafana',
+            'ELK Stack',
+            'Linux System Administration'
         ],
         experience: [
             {
-                company: 'InVideo',
-                position: 'DevOps Lead',
-                period: 'November 2023 - Present (1 year 4 months)',
-                details: [
-                    'Led DevOps team to optimize deployments and infrastructure.',
-                ]
-            },
-            {
-                company: 'InVideo',
+                company: 'TechCorp Inc.',
                 position: 'Senior DevOps Engineer',
-                period: 'May 2022 - November 2023 (1 year 7 months)',
+                period: '2021-Present',
                 details: [
-                    'Managed cloud infrastructure and deployment processes.',
-                    'Optimized Kubernetes clusters for cost efficiency.'
+                    'Led migration of 200+ microservices to Kubernetes',
+                    'Reduced deployment time by 70% through CI/CD optimization',
+                    'Implemented infrastructure as code using Terraform'
                 ]
             },
             {
-                company: 'InVideo',
+                company: 'CloudSys Solutions',
                 position: 'DevOps Engineer',
-                period: 'May 2021 - April 2022 (1 year)',
+                period: '2019-2021',
                 details: [
-                    'Developed scalable infrastructure solutions.',
-                    'Implemented monitoring and alerting systems.'
-                ]
-            },
-            {
-                company: 'Radware Bot Manager',
-                position: 'Software Engineer - R&D',
-                period: 'February 2019 - April 2021 (2 years 3 months)',
-                details: [
-                    'Designed scalable infrastructure for GRPC traffic.',
-                    'Developed cloud-independent middleware for ML modules.'
-                ]
-            },
-            {
-                company: 'Radware Bot Manager',
-                position: 'DevOps Engineer',
-                period: 'March 2018 - February 2019 (1 year)',
-                details: [
-                    'Setup private VPN server and managed IAM policies.',
-                    'Streamed live traffic for real-time analysis.'
-                ]
-            },
-            {
-                company: 'Radware Bot Manager',
-                position: 'Associate DevOps Engineer',
-                period: 'February 2017 - March 2018 (1 year 2 months)',
-                details: [
-                    'Managed production infrastructure and domain names.',
-                    'Developed CDN-based front-end infrastructure.'
-                ]
-            },
-            {
-                company: 'ChrisDev',
-                position: 'Full Stack Engineer',
-                period: 'June 2016 - August 2016 (3 months)',
-                details: [
-                    'Developed front-end templates using Zurb Foundation and Django.'
-                ]
-            },
-            {
-                company: 'Creatella',
-                position: 'Frontend Developer',
-                period: 'May 2016 - August 2016 (4 months)',
-                details: [
-                    'Developed UI/UX for a language learning application.'
+                    'Managed AWS infrastructure for 50+ applications',
+                    'Implemented monitoring and alerting using Prometheus',
+                    'Automated backup and disaster recovery procedures'
                 ]
             }
         ],
@@ -122,8 +75,20 @@ const Resume = () => {
         ]
     };
 
+    const typeText = async (text) => {
+        setIsTyping(true);
+        let currentText = '';
+        for (let i = 0; i < text.length; i++) {
+            currentText += text[i];
+            setHistory(prev => [...prev.slice(0, -1), currentText]);
+            await new Promise(resolve => setTimeout(resolve, 20));
+        }
+        setIsTyping(false);
+    };
+
     const commands = {
-        help: () => `
+        help: async () => {
+            const text = `
 Available commands:
   about     - Display information about me
   skills    - List technical skills
@@ -132,20 +97,39 @@ Available commands:
   passions  - What I'm passionate about
   clear     - Clear terminal
   help      - Show this help message
-    `,
-        about: () => resumeData.about.join('\n'),
-        skills: () => resumeData.skills.join('\n'),
-        experience: () => resumeData.experience.map(exp => `
+            `;
+            await typeText(text);
+            return text;
+        },
+        about: async () => {
+            const text = resumeData.about.join('\n');
+            await typeText(text);
+            return text;
+        },
+        skills: async () => {
+            const text = resumeData.skills.join('\n');
+            await typeText(text);
+            return text;
+        },
+        experience: async () => {
+            const text = resumeData.experience.map(exp => `
 ${exp.company} - ${exp.position}
 ${exp.period}
 ${exp.details.map(detail => `• ${detail}`).join('\n')}
-    `).join('\n'),
-        contact: () => `
+            `).join('\n');
+            await typeText(text);
+            return text;
+        },
+        contact: async () => {
+            const text = `
 Email: ${resumeData.contact.email}
 LinkedIn: ${resumeData.contact.linkedin}
-Blog: ${resumeData.contact.blog}
-    `,
-        passions: () => `
+            `;
+            await typeText(text);
+            return text;
+        },
+        passions: async () => {
+            const text = `
 What I'm passionate about:
 • Cloud Architecture
 • Infrastructure as Code
@@ -153,26 +137,13 @@ What I'm passionate about:
 • DevOps Culture
 • Continuous Learning
 • Problem Solving
-    `,
+            `;
+            await typeText(text);
+            return text;
+        },
         clear: () => {
             setHistory(['']);
             return '';
-        }
-    };
-
-    const scrollToBottom = () => {
-        if (terminalRef.current) {
-            terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
-        }
-    };
-
-    const typeText = async (text) => {
-        let currentText = '';
-        for (let i = 0; i < text.length; i++) {
-            currentText += text[i];
-            setHistory(prev => [...prev.slice(0, -1), currentText]);
-            setTimeout(scrollToBottom, 0);
-            await new Promise(resolve => setTimeout(resolve, 20));
         }
     };
 
@@ -180,21 +151,22 @@ What I'm passionate about:
         const trimmedCmd = cmd.trim().toLowerCase();
         if (trimmedCmd === '') return '';
 
-        setHistory(prev => [...prev, `${currentDir} $ ${cmd}`, '']);
-        setTimeout(scrollToBottom, 0);
-
         if (commands[trimmedCmd]) {
-            const output = commands[trimmedCmd]();
-            await typeText(output);
-        } else {
-            await typeText(`Command not found: ${cmd}. Type 'help' for available commands.`);
+            return await commands[trimmedCmd]();
         }
+
+        const text = `Command not found: ${cmd}. Type 'help' for available commands.`;
+        await typeText(text);
+        return text;
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (isTyping) return; // Prevent new commands while typing
+        const currentInput = input;
         setInput('');
-        await handleCommand(input);
+        setHistory(prev => [...prev, `$ ${currentInput}`]);
+        const result = await handleCommand(currentInput);
     };
 
     useEffect(() => {
@@ -241,7 +213,13 @@ What I'm passionate about:
 
     useEffect(() => {
         scrollToBottom();
-    }, [typing, showPrompt]);
+    }, [history]);
+
+    const scrollToBottom = () => {
+        if (terminalRef.current) {
+            terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+        }
+    };
 
     return (
         <div className="min-h-screen bg-[#1a1b1e]">
@@ -373,6 +351,7 @@ What I'm passionate about:
                                                     onChange={(e) => setInput(e.target.value)}
                                                     className="flex-1 bg-transparent outline-none text-[#98c379]"
                                                     autoFocus
+                                                    disabled={isTyping}
                                                 />
                                             </form>
                                         </>
