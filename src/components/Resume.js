@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Terminal as TerminalIcon } from 'lucide-react';
+import { Linkedin, Instagram, BookOpen, Twitter, Github, Rss } from 'lucide-react';
 import Link from 'next/link';
 
 const Resume = () => {
@@ -14,13 +14,19 @@ const Resume = () => {
     const terminalRef = useRef(null);
 
     const resumeData = {
-        about: `
-    Skilled DevOps Engineer with 5+ years of hands-on experience supporting, automating, and optimizing mission-critical deployments in GCP, and AWS, leveraging configuration management, CI/CD, and DevOps processes. Serving as a key member of the engineering department and aids in deploying shared infrastructure and traffic management services.
-    `,
+        about: [
+            `I am a DevOps and Cloud Platform Engineer with + years of experience in building scalable cloud infrastructure.`,
+            `I specialize in AWS and GCP environments, with expertise in Kubernetes, infrastructure automation, and modern DevOps practices.`,
+            `Throughout my career, I've focused on optimizing cloud costs, implementing secure architectures, and building reliable deployment pipelines. `,
+            `I'm passionate about creating robust infrastructure solutions that help teams deliver better software faster.`
+        ],
         skills: [
-            'Python (Programming Language)',
-            'Prometheus.io',
-            'Bash'
+            `Languages: Python, Bash, Go`,
+            `Cloud Platforms: AWS, GCP`,
+            `Container Technologies: Kubernetes, Docker, GKE, EKS, FLY.IO`,
+            `Infrastructure Tools: Terraform, Ansible, Helm, Packer`,
+            `Monitoring: ELK stack, Prometheus, Grafana LGTM stack`,
+            `Databases: Redis, Kafka, MongoDB, BigQuery, DynamoDB, RDS, RedShift`
         ],
         experience: [
             {
@@ -29,7 +35,6 @@ const Resume = () => {
                 period: 'November 2023 - Present (1 year 4 months)',
                 details: [
                     'Led DevOps team to optimize deployments and infrastructure.',
-                    'Implemented CI/CD pipelines and automated processes.'
                 ]
             },
             {
@@ -96,8 +101,7 @@ const Resume = () => {
         ],
         contact: {
             email: 'srivastava.sumi3@gmail.com',
-            linkedin: 'www.linkedin.com/in/timustcp',
-            blog: 'timusri.medium.com'
+            linkedin: 'www.linkedin.com/in/timustcp'
         },
         blogs: [
             {
@@ -129,7 +133,7 @@ Available commands:
   clear     - Clear terminal
   help      - Show this help message
     `,
-        about: () => resumeData.about,
+        about: () => resumeData.about.join('\n'),
         skills: () => resumeData.skills.join('\n'),
         experience: () => resumeData.experience.map(exp => `
 ${exp.company} - ${exp.position}
@@ -256,10 +260,46 @@ What I'm passionate about:
                                     />
                                 </div>
                                 <h2 className="text-2xl font-bold text-[#e6e6e6] mb-2">Sumit Srivastava</h2>
-                                <p className="text-[#a6a7ab]">
+                                <p className="text-[#a6a7ab] mb-4">
                                     DevOps Engineer with expertise in cloud infrastructure, automation, and scalable solutions.
-                                    Currently working on optimizing deployment processes and infrastructure management.
+                                    Currently working on optimizing deployment processes and infrastructure management in Invdeo.
                                 </p>
+                                <div className="flex space-x-4">
+                                    <a
+                                        href="https://www.linkedin.com/in/timustcp"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-[#98c379] hover:text-[#b5e890] transition-colors duration-200"
+                                    >
+                                        <Linkedin size={20} />
+                                    </a>
+                                    <a
+                                        href="https://timusri.medium.com"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-[#98c379] hover:text-[#b5e890] transition-colors duration-200"
+                                    >
+                                        <BookOpen size={20} />
+                                    </a>
+                                    <a
+                                        href="/blog"
+                                        className="text-[#98c379] hover:text-[#b5e890] transition-colors duration-200"
+                                    >
+                                        <Rss size={20} />
+                                    </a>
+                                    <a
+                                        href="https://github.com/timusri"
+                                        className="text-[#98c379] hover:text-[#b5e890] transition-colors duration-200"
+                                    >
+                                        <Github size={20} />
+                                    </a>
+                                    <a
+                                        href="https://x.com/timus__"
+                                        className="text-[#98c379] hover:text-[#b5e890] transition-colors duration-200"
+                                    >
+                                        <Twitter size={20} />
+                                    </a>
+                                </div>
                             </div>
 
                             <div>
