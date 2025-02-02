@@ -16,46 +16,130 @@ const Resume = () => {
 
     const resumeData = {
         about: [
-            'Senior DevOps Engineer with extensive experience in cloud infrastructure and automation.',
-            'Passionate about building scalable systems and improving development workflows.',
-            'Experienced in implementing and maintaining CI/CD pipelines.'
-        ],
-        skills: [
-            'AWS, GCP, Azure',
-            'Kubernetes, Docker',
-            'Terraform, Ansible',
-            'Jenkins, GitLab CI',
-            'Python, Bash, Go',
-            'Prometheus, Grafana',
-            'ELK Stack',
-            'Linux System Administration'
-        ],
-        experience: [
-            {
-                company: 'TechCorp Inc.',
-                position: 'Senior DevOps Engineer',
-                period: '2021-Present',
-                details: [
-                    'Led migration of 200+ microservices to Kubernetes',
-                    'Reduced deployment time by 70% through CI/CD optimization',
-                    'Implemented infrastructure as code using Terraform'
-                ]
-            },
-            {
-                company: 'CloudSys Solutions',
-                position: 'DevOps Engineer',
-                period: '2019-2021',
-                details: [
-                    'Managed AWS infrastructure for 50+ applications',
-                    'Implemented monitoring and alerting using Prometheus',
-                    'Automated backup and disaster recovery procedures'
-                ]
-            }
+            'DevOps and Cloud Platform Engineer with extensive experience in cloud infrastructure, automation, and scalable solutions.',
+            'Specializing in AWS, GCP, Kubernetes, and Infrastructure as Code.',
+            'Passionate about building resilient systems and optimizing development workflows.'
         ],
         contact: {
             email: 'srivastava.sumi3@gmail.com',
-            linkedin: 'www.linkedin.com/in/timustcp'
+            phone: '9108350848',
+            linkedin: 'timusritcp',
+            twitter: 'timus_',
+            github: 'timusri',
+            blog: 'timusri.medium.com'
         },
+        experience: [
+            {
+                company: 'Invideo',
+                location: 'Mumbai',
+                position: 'Head of DevOps',
+                period: 'November 2023 - Present',
+                details: [
+                    'Responsible for leading the DevOps team and overseeing the development and deployment of our products',
+                    'Responsible for security and compliance of the infrastructure and applications',
+                    'Responsible for the observability and monitoring of the infrastructure and applications'
+                ]
+            },
+            {
+                company: 'Invideo',
+                location: 'Mumbai',
+                position: 'Senior DevOps Engineer',
+                period: 'May 2022 - November 2023',
+                details: [
+                    'IAP based SSO implementation using Pomerium to securely access private databases inside a VPC',
+                    'Responsible for maintaining and writing IAC using Terraform',
+                    'Secret management within AWS EKS using AWS Parameter Store and CSI driver',
+                    'Data Archiving pipelines with AWS Backup',
+                    'End to End CI/CD Pipelines using custom composite GitHub actions for EKS deployments with linting and security check pipelines',
+                    'Implemented Scalable LGTM Observability stack for continuous logging and tracing of EKS Applications',
+                    'Added Synthetic monitoring for all the public APIs in order to monitor the Uptime and internal SLAs',
+                    'Managing the On-call process and the escalation policies with Pagerduty and slack'
+                ]
+            },
+            {
+                company: 'Invideo',
+                location: 'Mumbai',
+                position: 'DevOps Engineer',
+                period: 'May 2021 - April 2022',
+                details: [
+                    'Build the ETL Pipeline using AWS Glue and Redshift',
+                    'Build automated vulnerability scan pipelines using Checkov and Tfscans',
+                    'AWS AMI build automation using Ansible and Packer'
+                ]
+            },
+            {
+                company: 'Radware',
+                location: 'Bangalore',
+                position: 'Software Engineer R&D - DevOps',
+                period: 'Feb 2019 - May 2021',
+                details: [
+                    'Designed a scalable infrastructure to load balance GRPC traffic over multiple microservices using Nginx and Envoy ingress controllers and reduced the latency by 20%',
+                    'Designed an infrastructure matrix in GCP over a private shared-network, to deploy applications and hold data in more than 10 different regions to maintain GDPR policies using terraform and helm',
+                    'Developed a cloud independent middleware wrapper, which interacts between ML modules and cloud',
+                    'Developed an auto-scalable scheduling framework to submit ML jobs using AI platform and K8s APIs',
+                    'Responsible for managing TLS/SASL enabled Kafka clusters to handle 100K RPS of live traffic',
+                    'Developed alerting and monitoring system using Prometheus, Slack and ELK stack',
+                    'Responsible for managing more than 10 GKE clusters with 50+ microservices',
+                    'Responsible for optimizing K8s node-pools and applications to run in the preemptible environment to reduce 30% cloud cost',
+                    'Developed pipeline to configure HPA on external or custom metrics using Prometheus and Stackdriver adaptor',
+                    'Responsible for managing Redis clusters in Kubernetes for the caching system to store 600+ GB of data',
+                    'Automated CI/CD pipelines for backend/ml modules using Jenkins, Bitbucket and helm'
+                ]
+            },
+            {
+                company: 'Shieldsquare',
+                location: 'Bangalore',
+                position: 'DevOps Engineer',
+                period: 'Feb 2017 - Feb 2019',
+                details: [
+                    'Setup a private VPN server to access staging and production machines using OpenVPN',
+                    'Managed IAM, Firewall rules, Cloud Armour policies and Kubernetes Cluster Roles in the organization',
+                    'Designed an archiving system to store production data in GCP storage bucket and BigQuery',
+                    'Streamed live traffic in BigQuery using Python and Kafka for real-time analysis',
+                    'Managed sharded Mongo cluster to handle 10K RPS of traffic with fault tolerance and high availability',
+                    'Developed a CDN based front-end infrastructure to host custom JavaScript files globally',
+                    'Migrated production infrastructure from AWS to GCP',
+                    'Managed production domain names hosted zones in Route53'
+                ]
+            },
+            {
+                company: 'ChrisDev Limited',
+                location: 'Trinidad & Tobago',
+                position: 'Front-end Intern',
+                period: 'June 2016 - July 2016',
+                details: [
+                    'Developed front-end templates using Zurb Foundation, Django and Python'
+                ]
+            },
+            {
+                company: 'Creatella',
+                location: 'Singapore',
+                position: 'App Developer Intern',
+                period: 'May 2016 - August 2016',
+                details: [
+                    'Developed UI/UX of a language learning application using Framework7'
+                ]
+            }
+        ],
+        skills: {
+            languages: ['Python', 'Bash', 'Go'],
+            cicd: ['Terraform', 'Ansible', 'Helm', 'Packer', 'Atlantis', 'Jenkins', 'Github Action'],
+            cloud: ['GCP', 'AWS'],
+            containers: ['Kubernetes', 'Docker', 'GKE', 'EKS', 'FLY.IO'],
+            monitoring: ['ELK stack', 'Prometheus', 'Stackdriver', 'DataDog', 'Signoz', 'Grafana LGTM stack'],
+            databases: ['Redis', 'Kafka', 'MongoDB', 'BigQuery', 'DynamoDB', 'RDS', 'RedShift'],
+            versionControl: ['Github', 'Bitbucket', 'GitLab'],
+            os: ['Ubuntu', 'Centos7', 'Redhat7']
+        },
+        education: [
+            {
+                institution: 'Shri Mata Vaishno Devi University',
+                location: 'Jammu',
+                degree: 'B.Tech in Computer Science and Engineering',
+                period: '2013-2017',
+                details: ['CGPA: 7.04/10']
+            }
+        ],
         blogs: [
             {
                 title: "GRPC Loadbalancing in GKE using Nginx Ingress Controller",
@@ -81,7 +165,7 @@ const Resume = () => {
         for (let i = 0; i < text.length; i++) {
             currentText += text[i];
             setHistory(prev => [...prev.slice(0, -1), currentText]);
-            await new Promise(resolve => setTimeout(resolve, 20));
+            await new Promise(resolve => setTimeout(resolve, 10));
         }
         setIsTyping(false);
     };
@@ -123,7 +207,11 @@ ${exp.details.map(detail => `• ${detail}`).join('\n')}
         contact: async () => {
             const text = `
 Email: ${resumeData.contact.email}
+Phone: ${resumeData.contact.phone}
 LinkedIn: ${resumeData.contact.linkedin}
+Twitter: ${resumeData.contact.twitter}
+Github: ${resumeData.contact.github}
+Blog: ${resumeData.contact.blog}
             `;
             await typeText(text);
             return text;
