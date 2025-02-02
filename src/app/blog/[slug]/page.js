@@ -11,84 +11,111 @@ const md = new MarkdownIt({
     html: true,
     breaks: true,
     linkify: true
-}).use(highlightjs, { inline: true });
+}).use(highlightjs);
 
+// This function generates the static paths at build time
 export async function generateStaticParams() {
-    const postsDirectory = path.join(process.cwd(), 'posts');
-    const fileNames = fs.readdirSync(postsDirectory);
-
-    return fileNames.map(fileName => ({
-        slug: fileName.replace(/\.md$/, ''),
-    }));
+    try {
+        const postsDirectory = path.join(process.cwd(), 'posts');
+        if (!fs.existsSync(postsDirectory)) {
+            console.warn('Posts directory does not exist');
+            return [];
+        }
+        const fileNames = fs.readdirSync(postsDirectory);
+        return fileNames
+            .filter(fileName => fileName.endsWith('.md'))
+            .map(fileName => ({
+                slug: fileName.replace(/\.md$/, '')
+            }));
+    } catch (error) {
+        console.error('Error generating static params:', error);
+        return [];
+    }
 }
 
-export default async function BlogPost({ params }) {
-    const { slug } = params;
-    const fullPath = path.join(process.cwd(), 'posts', `${slug}.md`);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const { data, content } = matter(fileContents);
-    const htmlContent = md.render(content);
+// This function generates the metadata for each page
+export async function generateMetadata({ params }) {
+    try {
+        const { slug } = params;
+        const fullPath = path.join(process.cwd(), 'posts', `${slug}.md`);
+        const fileContents = fs.readFileSync(fullPath, 'utf8');
+        const { data } = matter(fileContents);
 
-    return (
-        <div className="min-h-screen bg-[#1a1b1e] text-[#e6e6e6]">
-            <main className="max-w-4xl mx-auto px-4 py-12">
-                <div className="mb-8">
-                    <Link
-                        href="/blog"
-                        className="text-[#98c379] hover:text-[#b5e890] transition-colors duration-200"
-                    >
-                        ← Back to Blog
-                    </Link>
-                </div>
-                <article className="prose prose-invert max-w-none
-                    prose-headings:text-[#e6e6e6]
-                    prose-p:text-[#e6e6e6]
-                    prose-a:text-[#98c379] prose-a:no-underline hover:prose-a:text-[#b5e890]
-                    prose-strong:text-[#e6e6e6]
-                    prose-code:text-[#e6e6e6]
-                    prose-pre:bg-transparent
-                    prose-pre:p-0
-                    prose-blockquote:text-[#a6a7ab]
-                    prose-blockquote:border-l-[#98c379]
-                    prose-li:text-[#e6e6e6]
-                    prose-img:rounded-lg
-                ">
-                    <header className="mb-8 not-prose">
-                        <h1 className="text-4xl font-bold text-[#e6e6e6] mb-4">
-                            {data.title}
-                        </h1>
-                        <div className="flex flex-col sm:flex-row sm:items-center text-[#a6a7ab] gap-2 sm:gap-4">
-                            {data.author && (
-                                <div className="flex items-center gap-2">
-                                    <span>By {data.author}</span>
-                                </div>
-                            )}
-                            {data.date && (
-                                <>
-                                    <span className="hidden sm:inline">•</span>
-                                    <time dateTime={data.date}>{data.date}</time>
-                                </>
-                            )}
-                        </div>
-                        {data.tags && data.tags.length > 0 && (
-                            <div className="flex flex-wrap gap-2 mt-4">
-                                {data.tags.map((tag, index) => (
-                                    <span
-                                        key={index}
-                                        className="bg-[#25262b] px-2 py-1 rounded text-sm text-[#a6a7ab]"
-                                    >
-                                        {tag}
-                                    </span>
-                                ))}
+        return {
+            title: data.title,
+            description: data.description || `${data.title} - Blog Post`,
+        };
+    } catch (error) {
+        return {
+            title: 'Blog Post Not Found',
+            description: 'The requested blog post could not be found.',
+        };
+    }
+}
+
+// The main page component
+export default function BlogPost({ params }) {
+    try {
+        const { slug } = params;
+        const fullPath = path.join(process.cwd(), 'posts', `${slug}.md`);
+        const fileContents = fs.readFileSync(fullPath, 'utf8');
+        const { data, content } = matter(fileContents);
+        const htmlContent = md.render(content);
+
+        return (
+            <div className="min-h-screen bg-[#1a1b1e] text-[#e6e6e6]">
+                <main className="max-w-4xl mx-auto px-4 py-12">
+                    <div className="mb-8">
+                        <Link
+                            href="/blog"
+                            className="text-[#98c379] hover:text-[#b5e890] transition-colors duration-200"
+                        >
+                            ← Back to Blog
+                        </Link>
+                    </div>
+                    <article className="prose prose-invert max-w-none">
+                        <header className="mb-8">
+                            <h1 className="text-4xl font-bold mb-4">{data.title}</h1>
+                            <div className="text-[#a6a7ab]">
+                                <time dateTime={data.date}>{data.date}</time>
+                                {data.tags && (
+                                    <div className="mt-2 flex gap-2">
+                                        {data.tags.map((tag) => (
+                                            <span
+                                                key={tag}
+                                                className="bg-[#2c2e33] px-2 py-1 rounded text-sm"
+                                            >
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                )}
                             </div>
-                        )}
-                    </header>
-                    <div
-                        dangerouslySetInnerHTML={{ __html: htmlContent }}
-                        className="[&>*:first-child]:mt-0"
-                    />
-                </article>
-            </main>
-        </div>
-    );
+                        </header>
+                        <div
+                            dangerouslySetInnerHTML={{ __html: htmlContent }}
+                            className="prose prose-invert prose-pre:bg-[#2c2e33] prose-pre:border prose-pre:border-[#363b44]"
+                        />
+                    </article>
+                </main>
+            </div>
+        );
+    } catch (error) {
+        return (
+            <div className="min-h-screen bg-[#1a1b1e] text-[#e6e6e6]">
+                <main className="max-w-4xl mx-auto px-4 py-12">
+                    <div className="mb-8">
+                        <Link
+                            href="/blog"
+                            className="text-[#98c379] hover:text-[#b5e890] transition-colors duration-200"
+                        >
+                            ← Back to Blog
+                        </Link>
+                    </div>
+                    <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
+                    <p>Sorry, the blog post you're looking for doesn't exist.</p>
+                </main>
+            </div>
+        );
+    }
 } 
