@@ -22,7 +22,6 @@ const Resume = () => {
         ],
         contact: {
             email: 'srivastava.sumi3@gmail.com',
-            phone: '9108350848',
             linkedin: 'timusritcp',
             twitter: 'timus_',
             github: 'timusri',
