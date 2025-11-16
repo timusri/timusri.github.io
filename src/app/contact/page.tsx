@@ -80,7 +80,7 @@ export default function ContactPage() {
 
                             <div className="space-y-3">
                                 <a
-                                    href="https://www.linkedin.com/in/timusritcp"
+                                    href="https://www.linkedin.com/in/timux"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-4 p-4 bg-[#2c2e33] rounded-lg hover:bg-[#363b44] transition-all hover:translate-x-1 group"
@@ -90,7 +90,7 @@ export default function ContactPage() {
                                         <div className="text-[#e6e6e6] font-medium group-hover:text-[#98c379] transition-colors">
                                             LinkedIn
                                         </div>
-                                        <div className="text-sm text-[#a6a7ab]">@timusritcp</div>
+                                        <div className="text-sm text-[#a6a7ab]">@timux</div>
                                     </div>
                                 </a>
 

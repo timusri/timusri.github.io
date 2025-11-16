@@ -22,7 +22,7 @@ const Resume = () => {
         ],
         contact: {
             email: 'srivastava.sumi3@gmail.com',
-            linkedin: 'timusritcp',
+            linkedin: 'timux',
             twitter: 'timus_',
             github: 'timusri',
             blog: 'timusri.medium.com'
@@ -331,7 +331,7 @@ What I'm passionate about:
                                 </p>
                                 <div className="flex space-x-4">
                                     <a
-                                        href="https://www.linkedin.com/in/timustcp"
+                                        href="https://www.linkedin.com/in/timux"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="text-[#98c379] hover:text-[#b5e890] transition-colors duration-200"
