@@ -47,20 +47,20 @@ const FeaturedTalks = async () => {
     }
 
     return (
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#25262b]/30">
+        <section className="py-12 px-4 sm:px-6 lg:px-8 bg-[#25262b]/30">
             <div className="max-w-6xl mx-auto">
-                <div className="flex items-center justify-between mb-12">
+                <div className="flex items-center justify-between mb-8">
                     <div>
-                        <h2 className="text-3xl md:text-4xl font-bold text-[#e6e6e6] mb-4">
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#e6e6e6] mb-2">
                             Conference <span className="text-[#98c379]">Talks</span>
                         </h2>
-                        <p className="text-[#a6a7ab] text-lg">
+                        <p className="text-[#a6a7ab]">
                             Speaking at DevOps conferences and community events
                         </p>
                     </div>
                     <Link
                         href="/talks"
-                        className="hidden md:flex items-center gap-2 text-[#98c379] hover:text-[#b5e890] transition-colors group"
+                        className="hidden md:flex items-center gap-2 text-[#98c379] hover:text-[#b5e890] transition-colors group text-sm"
                     >
                         View All
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -68,16 +68,16 @@ const FeaturedTalks = async () => {
                 </div>
 
                 {talks.length > 0 ? (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {talks.map((talk) => (
                             <Link
                                 key={talk.slug}
                                 href={`/talks/${talk.slug}`}
-                                className="group bg-[#25262b] rounded-xl overflow-hidden border border-[#2c2e33] hover:border-[#98c379]/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#98c379]/10"
+                                className="group bg-[#25262b] rounded-lg overflow-hidden border border-[#2c2e33] hover:border-[#98c379]/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#98c379]/10"
                             >
                                 {/* Thumbnail */}
                                 {talk.thumbnail ? (
-                                    <div className="relative h-48 overflow-hidden">
+                                    <div className="relative h-40 overflow-hidden">
                                         <img
                                             src={talk.thumbnail}
                                             alt={talk.title}
@@ -86,39 +86,39 @@ const FeaturedTalks = async () => {
                                         <div className="absolute inset-0 bg-gradient-to-t from-[#25262b] to-transparent opacity-60"></div>
                                     </div>
                                 ) : (
-                                    <div className="h-48 bg-gradient-to-br from-[#98c379]/20 to-[#2c2e33] flex items-center justify-center">
-                                        <Presentation className="w-16 h-16 text-[#98c379]/30" />
+                                    <div className="h-40 bg-gradient-to-br from-[#98c379]/20 to-[#2c2e33] flex items-center justify-center">
+                                        <Presentation className="w-12 h-12 text-[#98c379]/30" />
                                     </div>
                                 )}
 
-                                <div className="p-6">
+                                <div className="p-4">
                                     {/* Event Badge */}
-                                    <div className="flex items-center gap-2 text-[#98c379] text-sm font-medium mb-3">
-                                        <Presentation className="w-4 h-4" />
+                                    <div className="flex items-center gap-1.5 text-[#98c379] text-xs font-medium mb-2">
+                                        <Presentation className="w-3.5 h-3.5" />
                                         <span>{talk.event}</span>
                                     </div>
 
                                     {/* Title */}
-                                    <h3 className="text-xl font-bold text-[#e6e6e6] mb-2 group-hover:text-[#98c379] transition-colors line-clamp-2">
+                                    <h3 className="text-lg font-bold text-[#e6e6e6] mb-2 group-hover:text-[#98c379] transition-colors line-clamp-2">
                                         {talk.title}
                                     </h3>
 
                                     {/* Metadata */}
-                                    <div className="flex items-center gap-4 text-sm text-[#a6a7ab] mb-3">
+                                    <div className="flex items-center gap-3 text-xs text-[#a6a7ab] mb-2">
                                         <div className="flex items-center gap-1">
-                                            <Calendar className="w-4 h-4" />
+                                            <Calendar className="w-3.5 h-3.5" />
                                             <span>{talk.date}</span>
                                         </div>
                                         {talk.location && (
                                             <div className="flex items-center gap-1">
-                                                <MapPin className="w-4 h-4" />
+                                                <MapPin className="w-3.5 h-3.5" />
                                                 <span>{talk.location}</span>
                                             </div>
                                         )}
                                     </div>
 
                                     {/* Description */}
-                                    <p className="text-[#a6a7ab] text-sm line-clamp-2">
+                                    <p className="text-[#a6a7ab] text-xs line-clamp-2">
                                         {talk.description}
                                     </p>
                                 </div>
@@ -126,15 +126,15 @@ const FeaturedTalks = async () => {
                         ))}
                     </div>
                 ) : (
-                    <div className="text-center py-12">
-                        <p className="text-[#a6a7ab] text-lg">No talks yet.</p>
+                    <div className="text-center py-8">
+                        <p className="text-[#a6a7ab]">No talks yet.</p>
                     </div>
                 )}
 
-                <div className="mt-8 text-center md:hidden">
+                <div className="mt-6 text-center md:hidden">
                     <Link
                         href="/talks"
-                        className="inline-flex items-center gap-2 text-[#98c379] hover:text-[#b5e890] transition-colors"
+                        className="inline-flex items-center gap-2 text-[#98c379] hover:text-[#b5e890] transition-colors text-sm"
                     >
                         View All Talks
                         <ArrowRight className="w-4 h-4" />

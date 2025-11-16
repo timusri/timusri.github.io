@@ -52,65 +52,58 @@ const FeaturedPosts = async () => {
     }
 
     return (
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#1a1b1e]">
+        <section className="py-12 px-4 sm:px-6 lg:px-8 bg-[#1a1b1e]">
             <div className="max-w-6xl mx-auto">
-                <div className="flex items-center justify-between mb-12">
+                <div className="flex items-center justify-between mb-8">
                     <div>
-                        <h2 className="text-3xl md:text-4xl font-bold text-[#e6e6e6] mb-4">
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#e6e6e6] mb-2">
                             Featured <span className="text-[#98c379]">Posts</span>
                         </h2>
-                        <p className="text-[#a6a7ab] text-lg">
+                        <p className="text-[#a6a7ab]">
                             Thoughts on DevOps, cloud infrastructure, and more
                         </p>
                     </div>
                     <Link
                         href="/blog"
-                        className="hidden md:flex items-center gap-2 text-[#98c379] hover:text-[#b5e890] transition-colors group"
+                        className="hidden md:flex items-center gap-2 text-[#98c379] hover:text-[#b5e890] transition-colors group text-sm"
                     >
                         View All
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </Link>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {posts.map((post, index) => (
                         <Link
                             key={post.slug}
                             href={`/blog/${post.slug}`}
-                            className="group bg-[#25262b] rounded-xl p-6 border border-[#2c2e33] hover:border-[#98c379]/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#98c379]/10"
+                            className="group bg-[#25262b] rounded-lg p-4 border border-[#2c2e33] hover:border-[#98c379]/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#98c379]/10"
                         >
-                            {/* Gradient Background */}
-                            <div className="w-full h-32 bg-gradient-to-br from-[#98c379]/20 to-[#2c2e33] rounded-lg mb-4 flex items-center justify-center">
-                                <span className="text-4xl font-bold text-[#98c379]/30">
-                                    {index + 1}
-                                </span>
-                            </div>
-
-                            <div className="flex items-center gap-4 text-sm text-[#a6a7ab] mb-3">
+                            <div className="flex items-center gap-3 text-xs text-[#a6a7ab] mb-2">
                                 <div className="flex items-center gap-1">
-                                    <Calendar className="w-4 h-4" />
+                                    <Calendar className="w-3.5 h-3.5" />
                                     <span>{post.date}</span>
                                 </div>
                                 <div className="flex items-center gap-1">
-                                    <Clock className="w-4 h-4" />
+                                    <Clock className="w-3.5 h-3.5" />
                                     <span>{post.readingTime} min read</span>
                                 </div>
                             </div>
 
-                            <h3 className="text-xl font-bold text-[#e6e6e6] mb-3 group-hover:text-[#98c379] transition-colors">
+                            <h3 className="text-lg font-bold text-[#e6e6e6] mb-2 group-hover:text-[#98c379] transition-colors line-clamp-2">
                                 {post.title}
                             </h3>
 
-                            <p className="text-[#a6a7ab] text-sm mb-4 line-clamp-2">
+                            <p className="text-[#a6a7ab] text-xs mb-3 line-clamp-2">
                                 {post.description}
                             </p>
 
                             {post.tags.length > 0 && (
-                                <div className="flex flex-wrap gap-2">
+                                <div className="flex flex-wrap gap-1.5">
                                     {post.tags.slice(0, 3).map((tag: string) => (
                                         <span
                                             key={tag}
-                                            className="px-2 py-1 bg-[#2c2e33] text-[#98c379] text-xs rounded-md"
+                                            className="px-2 py-0.5 bg-[#2c2e33] text-[#98c379] text-xs rounded"
                                         >
                                             #{tag}
                                         </span>
@@ -121,10 +114,10 @@ const FeaturedPosts = async () => {
                     ))}
                 </div>
 
-                <div className="mt-8 text-center md:hidden">
+                <div className="mt-6 text-center md:hidden">
                     <Link
                         href="/blog"
-                        className="inline-flex items-center gap-2 text-[#98c379] hover:text-[#b5e890] transition-colors"
+                        className="inline-flex items-center gap-2 text-[#98c379] hover:text-[#b5e890] transition-colors text-sm"
                     >
                         View All Posts
                         <ArrowRight className="w-4 h-4" />
