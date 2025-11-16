@@ -3,7 +3,7 @@
 import React from 'react';
 import { 
     Cloud, Server, Boxes, Database, Activity, GitBranch, 
-    Terminal, Workflow, Shield, Eye
+    Terminal, Workflow, Shield, Eye, Brain, AlertTriangle
 } from 'lucide-react';
 
 const SkillsGrid = () => {
@@ -17,7 +17,7 @@ const SkillsGrid = () => {
         {
             title: 'Containers & Orchestration',
             icon: Boxes,
-            skills: ['Kubernetes', 'Docker', 'GKE', 'EKS'],
+            skills: ['Kubernetes', 'Docker', 'GKE', 'EKS', 'Traefik'],
             color: '#56b6c2'
         },
         {
@@ -27,15 +27,33 @@ const SkillsGrid = () => {
             color: '#98c379'
         },
         {
+            title: 'GitOps',
+            icon: Workflow,
+            skills: ['ArgoCD', 'Argo Workflows'],
+            color: '#61afef'
+        },
+        {
             title: 'Monitoring & Observability',
             icon: Activity,
-            skills: ['Prometheus', 'Grafana LGTM', 'DataDog', 'ELK Stack', 'Signoz'],
+            skills: ['Prometheus', 'Grafana LGTM', 'Mimir', 'Beyla', 'DataDog', 'ELK Stack', 'Signoz'],
             color: '#e5c07b'
+        },
+        {
+            title: 'Incident Response',
+            icon: AlertTriangle,
+            skills: ['PagerDuty', 'On-call Management'],
+            color: '#e06c75'
+        },
+        {
+            title: 'LLM & AI Ops',
+            icon: Brain,
+            skills: ['TensorZero', 'Langfuse', 'LiteLLM', 'Cursor'],
+            color: '#d19a66'
         },
         {
             title: 'Databases',
             icon: Database,
-            skills: ['Redis', 'MongoDB', 'PostgreSQL', 'BigQuery', 'DynamoDB'],
+            skills: ['Redis', 'MongoDB', 'PostgreSQL', 'Kafka', 'BigQuery', 'DynamoDB'],
             color: '#c678dd'
         },
         {
