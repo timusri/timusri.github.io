@@ -73,20 +73,7 @@ export default async function TalkPage({ params }: { params: Promise<{ slug: str
                     </div>
 
                     {/* Article */}
-                    <article className="bg-[#25262b] rounded-xl border border-[#2c2e33] overflow-hidden">
-                        {/* Featured Image */}
-                        {data.thumbnail && (
-                            <div className="w-full h-64 md:h-96 overflow-hidden">
-                                <img
-                                    src={data.thumbnail}
-                                    alt={data.title}
-                                    className="w-full h-full object-cover"
-                                />
-                            </div>
-                        )}
-
-                        {/* Content */}
-                        <div className="p-8">
+                    <article className="bg-[#25262b] rounded-xl border border-[#2c2e33] p-8">
                             {/* Header */}
                             <header className="mb-8">
                                 <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#e6e6e6]">
@@ -186,7 +173,6 @@ export default async function TalkPage({ params }: { params: Promise<{ slug: str
                                 dangerouslySetInnerHTML={{ __html: htmlContent }}
                                 className="prose prose-invert max-w-none"
                             />
-                        </div>
                     </article>
                 </main>
             </div>

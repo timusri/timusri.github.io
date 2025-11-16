@@ -8,7 +8,7 @@ description: "Harnessing Kubecost for Enhanced Cost Efficiency: Optimizing EKS C
 author: "Sumit Srivastava"
 thumbnail: "/talks/devopsdaysblr.jpeg"
 slidesUrl: "https://docs.google.com/presentation/d/e/2PACX-1vQdtwHmmHLJ9GWc1Kk5SLPce1jXcAVAHTC_ca_LaHmnsORdX36Qgs5YyqgIPY-dxujpVtxIwlUwx1D_/embed"
-linkedinPostUrl: "https://www.linkedin.com/embed/feed/update/urn:li:share:7121755795544797184"
+linkedinPostUrl: "https://www.linkedin.com/embed/feed/update/urn:li:share:7120123985874329600"
 ---
 
 ## Talk Overview
