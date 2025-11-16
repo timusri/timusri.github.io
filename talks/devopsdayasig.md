@@ -13,7 +13,7 @@ linkedinPostUrl: "https://www.linkedin.com/embed/feed/update/urn:li:share:732700
 
 ## Talk Overview
 
-In this talk at DevOps Days Singapore 2023, I shared insights on using Kubecost to optimize cloud costs for Kubernetes workloads, specifically focusing on EKS clusters and GPU-intensive workloads at Invideo.
+In this talk at DevOps Days Singapore 2025, I shared insights on using Kubecost to optimize cloud costs for Kubernetes workloads, specifically focusing on EKS clusters and GPU-intensive workloads at Invideo.
 
 ### Key Topics Covered
 
