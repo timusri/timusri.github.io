@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Calendar, Clock } from 'lucide-react';
+import { Calendar, Clock, ExternalLink } from 'lucide-react';
 
 interface BlogCardProps {
     slug: string;
@@ -11,6 +11,7 @@ interface BlogCardProps {
     description: string;
     tags: string[];
     readingTime: number;
+    externalUrl?: string;  // Optional external URL
 }
 
 const BlogCard: React.FC<BlogCardProps> = ({
@@ -19,13 +20,14 @@ const BlogCard: React.FC<BlogCardProps> = ({
     date,
     description,
     tags,
-    readingTime
+    readingTime,
+    externalUrl
 }) => {
-    return (
-        <Link
-            href={`/blog/${slug}`}
-            className="group block bg-[#25262b] rounded-xl p-6 border border-[#2c2e33] hover:border-[#98c379]/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#98c379]/10"
-        >
+    const href = externalUrl || `/blog/${slug}`;
+    const isExternal = !!externalUrl;
+    
+    const CardContent = (
+        <>
             {/* Meta Information */}
             <div className="flex items-center gap-4 text-sm text-[#a6a7ab] mb-3">
                 <div className="flex items-center gap-1">
@@ -36,6 +38,12 @@ const BlogCard: React.FC<BlogCardProps> = ({
                     <Clock className="w-4 h-4" />
                     <span>{readingTime} min read</span>
                 </div>
+                {isExternal && (
+                    <div className="flex items-center gap-1 text-[#98c379]">
+                        <ExternalLink className="w-4 h-4" />
+                        <span className="text-xs font-medium">Medium</span>
+                    </div>
+                )}
             </div>
 
             {/* Title */}
@@ -61,6 +69,28 @@ const BlogCard: React.FC<BlogCardProps> = ({
                     ))}
                 </div>
             )}
+        </>
+    );
+
+    if (isExternal) {
+        return (
+            <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block bg-[#25262b] rounded-xl p-6 border border-[#2c2e33] hover:border-[#98c379]/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#98c379]/10"
+            >
+                {CardContent}
+            </a>
+        );
+    }
+
+    return (
+        <Link
+            href={href}
+            className="group block bg-[#25262b] rounded-xl p-6 border border-[#2c2e33] hover:border-[#98c379]/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#98c379]/10"
+        >
+            {CardContent}
         </Link>
     );
 };

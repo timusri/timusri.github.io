@@ -126,6 +126,7 @@ const BlogListClient: React.FC<BlogListClientProps> = ({ initialPosts }) => {
                                 description={post.description || ''}
                                 tags={post.tags}
                                 readingTime={post.readingTime || 1}
+                                externalUrl={post.externalUrl}
                             />
                         ))}
                     </div>

@@ -6,6 +6,7 @@ export interface BlogPost {
     description?: string;
     content?: string;
     readingTime?: number;
+    externalUrl?: string;  // Optional external URL (e.g., Medium article)
 }
 
 /**

@@ -26,7 +26,8 @@ export default async function BlogIndex() {
                     date: data.date || '',
                     tags: data.tags || [],
                     description: data.description || content.substring(0, 150) + '...',
-                    readingTime: calculateReadingTime(content)
+                    readingTime: calculateReadingTime(content),
+                    externalUrl: data.externalUrl || ''  // Include external URL if present
                 };
             })
             .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
