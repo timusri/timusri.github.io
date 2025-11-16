@@ -1,8 +1,9 @@
 ---
 title: "How to grant privileges to future tables in PostgreSQL"
 date: "2024-04-10"
-tags: ["postgresql", "database", "aws"]
-
+tags: ["postgresql", "database", "aws", "devops"]
+description: "Learn how to use ALTER DEFAULT PRIVILEGES in PostgreSQL to grant permissions to tables that will be created in the future, ensuring proper access control for your database."
+author: "Sumit Srivastava"
 ---
 To grant permissions to future tables in PostgreSQL, you can use the `ALTER DEFAULT PRIVILEGES` command. This command allows you to set the privileges that will be applied to objects created in the future. It's important to note that `ALTER DEFAULT PRIVILEGES` only affects new tables and does not apply to existing ones. The privileges are set for the current user or for a specific user if specified in the `FOR USER` clause.
 
