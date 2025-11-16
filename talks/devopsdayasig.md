@@ -1,7 +1,7 @@
 ---
 title: "Managing Cloud Costs with Kubecost"
-date: "2024-05-15"
-event: "DevOps Days Singapore 2024"
+date: "2025-05-15"
+event: "DevOps Days Singapore 2025"
 location: "Singapore"
 tags: ["kubecost", "finops", "devops", "kubernetes", "cost-optimization"]
 description: "Managing Cloud Costs with Kubecost and Strategies we have used in Invideo to reduce infra costs"
