@@ -1,6 +1,5 @@
 import React from 'react';
-import { Mail, Linkedin, Twitter, Github, MapPin, Briefcase, QrCode } from 'lucide-react';
-import Image from 'next/image';
+import { Mail, Linkedin, Twitter, Github, MapPin, Briefcase } from 'lucide-react';
 
 export const metadata = {
     title: 'Contact | Sumit Srivastava',
@@ -140,28 +139,6 @@ export default function ContactPage() {
                                         <div className="text-sm text-[#a6a7ab]">@timusri</div>
                                     </div>
                                 </a>
-                            </div>
-                        </div>
-
-                        {/* QR Code Section */}
-                        <div className="bg-[#25262b] rounded-xl p-6 border border-[#2c2e33]">
-                            <div className="flex items-center gap-2 mb-4">
-                                <QrCode className="w-5 h-5 text-[#98c379]" />
-                                <h3 className="text-lg font-bold text-[#e6e6e6]">
-                                    Quick Connect
-                                </h3>
-                            </div>
-                            <p className="text-sm text-[#a6a7ab] mb-4">
-                                Scan to connect on LinkedIn
-                            </p>
-                            <div className="flex justify-center bg-white p-4 rounded-lg">
-                                <img
-                                    src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.linkedin.com/in/timusritcp"
-                                    alt="LinkedIn QR Code"
-                                    width={200}
-                                    height={200}
-                                    className="rounded"
-                                />
                             </div>
                         </div>
                     </div>
