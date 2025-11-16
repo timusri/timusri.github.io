@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Mail } from 'lucide-react';
+import { ArrowRight, Mail, QrCode } from 'lucide-react';
 
 const HeroSection = () => {
     const [currentRole, setCurrentRole] = useState('');
@@ -105,29 +105,31 @@ const HeroSection = () => {
                         Head of DevOps at Invideo, specializing in cloud infrastructure, Kubernetes, 
                         and building scalable solutions. Passionate about automation, reliability, and DevOps culture.
                     </p>
+                </div>
 
-                    {/* CTA Buttons */}
-                    <div className="flex flex-wrap items-center justify-center gap-4 mt-8 mb-16">
-                        <Link
-                            href="/blog"
-                            className="group flex items-center gap-2 px-6 py-3 bg-[#98c379] text-[#1a1b1e] font-medium rounded-lg hover:bg-[#b5e890] transition-all duration-200 shadow-lg shadow-[#98c379]/20 hover:shadow-xl hover:shadow-[#98c379]/30 hover:-translate-y-0.5"
-                        >
-                            View Blog
-                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        </Link>
-                        
-                        <Link
-                            href="/contact"
-                            className="group flex items-center gap-2 px-6 py-3 bg-[#25262b] text-[#e6e6e6] font-medium rounded-lg hover:bg-[#2c2e33] transition-all duration-200 border border-[#2c2e33] hover:border-[#98c379]/50 hover:-translate-y-0.5"
-                        >
-                            <Mail className="w-4 h-4" />
-                            Contact Me
-                        </Link>
+                {/* Bottom Section - QR & Scroll Indicator */}
+                <div className="flex flex-col items-center gap-6 mt-12">
+                    {/* QR Code */}
+                    <div className="bg-[#25262b] rounded-lg p-4 border border-[#2c2e33] hover:border-[#98c379]/30 transition-all group">
+                        <div className="flex items-center justify-center gap-2 mb-3">
+                            <QrCode className="w-5 h-5 text-[#98c379]" />
+                            <span className="text-sm font-medium text-[#e6e6e6]">Quick Connect</span>
+                        </div>
+                        <div className="bg-white p-3 rounded">
+                            <img
+                                src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://timux.in/contact"
+                                alt="Contact QR Code"
+                                width={160}
+                                height={160}
+                                className="rounded"
+                            />
+                        </div>
+                        <p className="text-xs text-[#a6a7ab] text-center mt-2">Scan to connect</p>
                     </div>
 
                     {/* Scroll Indicator */}
-                    <div className="mt-12 animate-bounce">
-                        <div className="w-6 h-10 rounded-full border-2 border-[#98c379]/30 flex items-start justify-center p-2 mx-auto">
+                    <div className="animate-bounce">
+                        <div className="w-6 h-10 rounded-full border-2 border-[#98c379]/30 flex items-start justify-center p-2">
                             <div className="w-1.5 h-1.5 bg-[#98c379] rounded-full animate-pulse"></div>
                         </div>
                     </div>
