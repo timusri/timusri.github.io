@@ -8,7 +8,7 @@ description: "Managing Cloud Costs with Kubecost and Strategies we have used in 
 author: "Sumit Srivastava"
 thumbnail: "/talks/devopsdayssingapore.jpeg"
 slidesUrl: "https://docs.google.com/presentation/d/e/2PACX-1vQONdlaVxs8AAMRrQY0o_n8EeS_PddUtACDaMaZY71ivCMFgEJCQ6aI8JuHpkOuEA/embed"
-linkedinPostUrl: "https://www.linkedin.com/embed/feed/update/urn:li:share:7330270008327008257"
+linkedinPostUrl: "https://www.linkedin.com/embed/feed/update/urn:li:share:7327008784428503040"
 ---
 
 ## Talk Overview
