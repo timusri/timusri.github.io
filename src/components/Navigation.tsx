@@ -62,6 +62,16 @@ const Navigation = () => {
                             Blog
                         </Link>
                         <Link
+                            href="/talks"
+                            className={`text-sm font-medium transition-colors duration-200 ${
+                                pathname?.startsWith('/talks')
+                                    ? 'text-[#98c379]'
+                                    : 'text-[#a6a7ab] hover:text-[#e6e6e6]'
+                            }`}
+                        >
+                            Talks
+                        </Link>
+                        <Link
                             href="/contact"
                             className={`text-sm font-medium transition-colors duration-200 ${
                                 pathname === '/contact'
